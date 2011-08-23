@@ -1,6 +1,11 @@
 # encoding: utf-8
 require 'net/https'
 
+# HTML/XML escape a string, based on CGI module
+def h(string)
+	string.to_s.gsub(/&/, '&amp;').gsub(/\"/, '&quot;').gsub(/>/, '&gt;').gsub(/</, '&lt;')
+end
+
 # Convert relative URI to absolute URI
 def relative_to_absolute(uri, relative_to)
 	return nil if uri.nil?
