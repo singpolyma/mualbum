@@ -20,6 +20,7 @@ def find_photo_uri(uri)
 			final_uri
 		when /html/
 			get = method(:get_attr).to_proc.curry[Nokogiri::parse(response.body)]
+			return nil if get.call('meta[property="og:type"]', 'content') == 'article'
 			# If I use a block instead of a lambda argument, it stays bound
 			get.call('*[rel~="alternate"]', 'src', lambda {|el| el.attributes['type'] =~ /^image\// }) ||
 			get.call('.entry-content > img:first-child', 'src') ||

@@ -1,4 +1,4 @@
-# encode: utf-8
+# encoding: utf-8
 require 'minitest/autorun'
 
 $: << File.dirname(__FILE__) + '/../lib'
@@ -25,6 +25,7 @@ class TestFindPhotoURI < MiniTest::Unit::TestCase
 		['yfrog', 'http://yfrog.com/h0sadtej',
 		 'http://a.yfrog.com/img612/4825/sadte.jpg'],
 		['google', 'http://google.com', nil],
+		['techcrunch', 'http://techcrunch.com/2011/08/21/linuxcon-open-source-is-an-ecosystem-not-a-zero-sum-game/', nil],
 		['identica', 'http://identi.ca/attachment/51334196',
 		 'http://file.status.net/i/identica/mahmood-20110817T172308-lqy75yt.jpeg'],
 		['zooomr', 'http://www.zooomr.com/photos/timelord25/10055468/',
@@ -39,7 +40,7 @@ class TestFindPhotoURI < MiniTest::Unit::TestCase
 				[page, FakeResponse.new("#{key}.html")]
 			}
 
-			assert_equal find_photo_uri(page), photo
+			assert_equal photo, find_photo_uri(page)
 		}
 	end
 end
