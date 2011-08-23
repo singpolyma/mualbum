@@ -1,0 +1,16 @@
+html, body {
+	background: #000;
+	color: #ccc;
+}
+
+ol, li {
+	list-style-type: none;
+	display: inline;
+	border-bottom: 1px dotted #ccc;
+}
+
+img {
+	display: inline;
+	padding: 1em;
+	max-height: 40%;
+}
