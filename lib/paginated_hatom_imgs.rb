@@ -14,8 +14,10 @@ def paginated_hatom_imgs(uri, depth = 0)
 		next if el.attributes['class'].to_s =~ /(?:^|\s)(?:url|response|username|hashtag)(?:\s|$)/i
 		relative_to_absolute(el.attributes['href'].to_s, final_uri)
 	end.compact.uniq.map do |uri|
-		find_photo_uri(uri)
-	end.compact.uniq
+		find_photo_uri(uri) rescue nil
+	end.compact.uniq.reject do |uri|
+		uri =~ /logo|avatar/
+	end
 
 	if imgs.length < 10 && depth < 5
 		if (n = doc.at('*[rel~="next"]'))
