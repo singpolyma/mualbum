@@ -30,7 +30,9 @@ class TestFindPhotoURI < MiniTest::Unit::TestCase
 		['zooomr', 'http://www.zooomr.com/photos/timelord25/10055468/',
 		 'http://static.zooomr.com/images/10055468_705cb85f63.jpg'],
 		['instagram', 'http://instagr.am/p/LArpD/',
-		 'http://images.instagram.com/media/2011/08/22/6e72127c2b9e498d8a0426eb9424bfa4_7.jpg']
+		 'http://images.instagram.com/media/2011/08/22/6e72127c2b9e498d8a0426eb9424bfa4_7.jpg'],
+		['imgur', 'http://imgur.com/gallery/vuQXR',
+		 'http://i.imgur.com/vuQXR.png']
 	].each do |(key, page, photo)|
 		define_method("test_#{key}") {
 			Object.send(:define_method, :fetch) { |uri|
